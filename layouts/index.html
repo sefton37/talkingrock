@@ -1,0 +1,39 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="hero-inner">
+    <h1>{{ .Site.Params.tagline | safeHTML }}</h1>
+    <p class="hero-sub">{{ .Site.Params.description }}</p>
+    <div class="hero-actions">
+      <a href="/cairn" class="btn btn-primary">Learn about CAIRN</a>
+      <a href="/demo" class="btn btn-secondary">Try the demo</a>
+    </div>
+  </div>
+</section>
+
+<section class="principles">
+  <div class="container">
+    <div class="principle-grid">
+      <div class="principle">
+        <h3>Local first</h3>
+        <p>Your data stays on your machine. No cloud required. No intermediaries between you and your information.</p>
+      </div>
+      <div class="principle">
+        <h3>Zero trust</h3>
+        <p>Every action is verified. Every lesson learned is reviewable. Nothing happens without your explicit consent.</p>
+      </div>
+      <div class="principle">
+        <h3>Small footprint</h3>
+        <p>Small models that run on your hardware. No GPU farm required. Outsized impact from right-sized tools.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>AI that partners with your values</h2>
+    <p>Not to automate you. Not to profile you. To work alongside you, on your terms.</p>
+    <a href="/about" class="btn btn-primary">Our philosophy</a>
+  </div>
+</section>
+{{ end }}
