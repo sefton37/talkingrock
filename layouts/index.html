@@ -13,8 +13,7 @@
     <h1>{{ .Site.Params.tagline | safeHTML }}</h1>
     <p class="hero-sub">{{ .Site.Params.description }}</p>
     <div class="hero-actions">
-      <a href="/cairn" class="btn btn-primary">Learn about CAIRN</a>
-      <a href="/demo" class="btn btn-secondary">Try the demo</a>
+      <a href="/cairn" class="btn btn-primary">Learn about Cairn</a>
     </div>
   </div>
 </section>
@@ -38,11 +37,33 @@
   </div>
 </section>
 
+<section class="demo-preview">
+  <div class="container">
+    <h2>Try the demo</h2>
+    <p>The Cairn demo is coming soon. When it launches, you'll be able to:</p>
+    <ul>
+      <li>Explore a simulated calendar and email environment</li>
+      <li>Watch Cairn observe, distill, and propose workflow optimizations</li>
+      <li>Accept, reject, or modify every lesson Cairn learns</li>
+      <li>See the full reasoning behind every suggestion</li>
+    </ul>
+    <p class="demo-note">The demo runs on HuggingFace infrastructure so you can try Cairn without local setup. The production product runs entirely on your machine.</p>
+  </div>
+</section>
+
 <section class="cta-section">
   <div class="container">
     <h2>AI that partners with your values</h2>
     <p>Not to automate you. Not to profile you. To work alongside you, on your terms.</p>
     <a href="/about" class="btn btn-primary">Our philosophy</a>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="container">
+    <h2>Get in touch</h2>
+    <p><a href="mailto:kellogg@brengel.com">kellogg@brengel.com</a></p>
+    <p><a href="https://rogueroutine.substack.com">Read the blog on Substack</a></p>
   </div>
 </section>
 {{ end }}
