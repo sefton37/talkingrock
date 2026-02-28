@@ -1,58 +1,50 @@
 ---
 title: "ReOS"
-description: "A local-first AI framework for Linux that verifies before it acts. Your machine, your rules."
+description: "Natural language Linux, right in your shell. It enhances the command line — it doesn't replace it."
 ---
 
 ## What is ReOS?
 
-ReOS is a Linux desktop AI assistant framework built on three principles: **local-first**, **verification-first**, and **permission-required**. It runs small language models on your hardware and provides system-level AI capabilities without cloud dependencies, subscriptions, or data extraction.
+ReOS is a natural language interface for Linux that lives in your terminal. Ask it something in plain English and it figures out the right command. Type a normal shell command and it stays out of the way entirely.
 
-ReOS is the foundation that powers [Cairn](/cairn).
-
----
-
-## Verification pipeline
-
-Before any action touches your system, it passes through five verification layers:
-
-1. **Syntax** — is the command structurally valid?
-2. **Semantic** — does the request make logical sense?
-3. **Behavioral** — does it align with your established patterns?
-4. **Safety** — could this damage your system or access unauthorized resources?
-5. **Intent** — did you actually mean what the AI thinks you meant?
-
-Because inference is local, verification is free. So we verify everything.
+The core principle: **enhance, don't replace.** Your terminal still works exactly like a terminal. ReOS only activates when it recognizes something that isn't a valid shell command.
 
 ---
 
-## Atomic operations
+## How it works
 
-Every request is classified across three dimensions — where output goes (stream, file, or process), who consumes it (human or machine), and what action is taken (read, interpret, or execute). This taxonomy enables fine-grained safety controls and tuned model behavior for each type of operation.
+ReOS sits between you and your shell with a parse gate that decides whether to act:
 
-Read operations get precision. Interpretive operations get creativity. Execution gets reliability.
+1. **Valid shell command?** Execute it directly — full stdin/stdout/stderr, interactive prompts work normally.
+2. **Natural language?** Analyze intent, check your system, propose the right command.
 
----
-
-## The Play
-
-ReOS organizes personal context through a theatrical metaphor with exactly two levels:
-
-- **Acts** — months to years. Life narratives like Career, Health, Family, Projects.
-- **Scenes** — days to weeks. Calendar events or tasks within an Act.
-
-Two levels is deliberate. More than two lets you hide from responsibility in complexity. Two forces clarity: *what narrative does this belong to?* and *when am I doing this?*
+There's no mode switching. No special prefix. If you type `ls -la`, it runs `ls -la`. If you type "what's using all my memory," it finds the answer.
 
 ---
 
-## Self-knowledge
+## The parse gate
 
-ReOS includes a three-tier system for AI self-understanding across large codebases:
+When ReOS detects natural language, it runs through four steps:
 
-- **Architecture blueprint** — a compressed overview that fits in context, always available
-- **RAG retrieval** — keyword-based code indexing, no vector database required
-- **Full source** — targeted file reading when specific code is needed
+1. **Intent analysis** — what are you trying to do? (run, install, find, monitor, etc.)
+2. **System check** — what's available on your machine? (PATH, packages, services)
+3. **Semantic search** — find programs by description, not just name ("picture editor" finds GIMP)
+4. **Smart proposal** — suggest a command with context, explain what it does, ask before executing
 
-This means the AI understands its own codebase without consuming enormous context windows or requiring external infrastructure.
+Every proposed command is shown to you first. Nothing runs without your approval.
+
+---
+
+## What it can do
+
+- **Process monitoring** — "what's eating my RAM?" → ranked memory consumers
+- **Service management** — "restart nginx" → systemd service control
+- **Package management** — "install ffmpeg" → finds and installs via your package manager
+- **Container control** — Docker and Podman operations in plain language
+- **File operations** — search, move, organize with safety checks
+- **System diagnostics** — disk usage, network status, hardware info
+
+All through small models (1-3B parameters) running locally. Shell commands are constrained and predictable — you don't need a massive model to get them right.
 
 ---
 

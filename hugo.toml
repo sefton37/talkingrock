@@ -20,13 +20,17 @@ title = 'Talking Rock AI'
     url = '/riva/'
     weight = 3
   [[menus.main]]
+    name = 'NOLang'
+    url = '/nolang/'
+    weight = 4
+  [[menus.main]]
     name = 'About'
     url = '/about/'
-    weight = 4
+    weight = 5
   [[menus.main]]
     name = 'Blog'
     url = 'https://rogueroutine.substack.com'
-    weight = 5
+    weight = 6
     [menus.main.params]
       external = true
 

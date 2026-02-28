@@ -5,9 +5,9 @@ description: "Recursive Intention-Verification Architecture. Code generation tha
 
 ## What is RIVA?
 
-RIVA is a code generation and verification system built on a simple premise: **if you can't verify it, decompose it.** It uses recursive decomposition to break complex coding tasks into independently verifiable pieces, then validates each one through a multi-layer verification pipeline.
+RIVA is a code generation and verification engine built on a simple premise: **if you can't verify it, decompose it.** It breaks complex coding tasks into independently verifiable pieces, validates each one through a multi-layer pipeline, and uses [NOLang](/nolang) as its canonical intermediate representation to eliminate the ambiguity that plagues LLM-generated code.
 
-Traditional code generation optimizes for speed because tokens cost money. RIVA optimizes for **correctness** because tokens are free — it runs on local inference via Ollama. We'll spend 3 seconds verifying a 1-second change rather than risk a bug that takes 3 hours to debug.
+Traditional code generation optimizes for speed because tokens cost money. RIVA optimizes for **correctness** because tokens are free — it runs on local inference. We'll spend 3 seconds verifying a 1-second change rather than risk a bug that takes 3 hours to debug.
 
 ---
 
@@ -36,36 +36,37 @@ Four progressive layers, each building on the last:
 | **Behavioral** | Does it execute correctly? | Test execution with timeouts |
 | **Intent** | Does it match what was requested? | LLM-based alignment verification |
 
-Verification strategy adapts to risk. Low-risk changes (imports, config) get syntax checks. High-risk changes (security, destructive operations) get the full pipeline. Always.
+Verification strategy adapts to risk. Low-risk changes get syntax checks. High-risk changes get the full pipeline. Always.
+
+---
+
+## NOLang: the plan language
+
+Before RIVA writes code in your target language, it builds a plan in [NOLang](/nolang) — a programming language designed for LLM generation, not human authorship.
+
+The flow:
+
+1. **You describe what you want** in natural language
+2. **RIVA generates a NOLang program** — fixed-width binary instructions with no naming ambiguity
+3. **The verifier checks it statically** — types, stack balance, exhaustiveness, hash integrity, contracts
+4. **Only after verification** does RIVA translate the plan into your target language
+
+NOLang eliminates the coin-flip problem. When an LLM writes Python, every variable name, every style choice is a probability distribution. In NOLang, there's exactly one way to express any computation. Same intent, same instructions, every time.
+
+Programs that fail verification get rejected and regenerated — not shipped with hidden bugs.
 
 ---
 
 ## Trust budget
 
-RIVA tracks trust across a session. You start with a budget. Successful verifications earn trust. Skipped verifications spend it. High-risk actions are always verified regardless of budget.
+RIVA tracks trust across a session. Successful verifications earn trust. Skipped verifications spend it. High-risk actions are always verified regardless of budget.
 
 The result: RIVA learns which patterns are reliable and adjusts its diligence accordingly — paranoid when it should be, efficient when it can be.
 
 ---
 
-## Risk-aware decisions
-
-Every action is classified by risk:
-
-- **High** — destructive operations, security-sensitive code, external dependencies. Always fully verified.
-- **Medium** — normal code changes. Standard verification.
-- **Low** — read-only operations, boilerplate, documentation. Minimal verification with high trust.
-
-RIVA knows when to be careful and when to move fast. The distinction isn't manual — it's pattern-matched from the action itself.
-
----
-
-## Fast paths
-
-80% of coding requests are variations on 20% of patterns. RIVA detects common operations — adding imports, creating functions, fixing tests — and optimizes them with minimal overhead, falling back to full recursive decomposition only when needed.
-
----
-
 ## Under development
 
-RIVA is in active development. Follow progress on [GitHub](https://github.com/sefton37/talkingrock).
+RIVA is in active development. The verification pipeline and NOLang backend are built and tested. End-to-end LLM generation is next.
+
+Follow progress on [GitHub](https://github.com/sefton37/talkingrock).
