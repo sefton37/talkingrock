@@ -32,6 +32,35 @@ No lesson persists without your consent. No action is taken without your approva
 
 ---
 
+## How it learns
+
+Cairn maintains one conversation at a time. Not threads. Not chat tabs. One continuous dialogue with deliberate closure. This forces depth — when you're talking to Cairn, it's focused on what you're focused on.
+
+As you talk, Cairn listens for moments worth remembering — a decision you made, a preference you expressed, a commitment you stated. When it detects one, it runs a compression pipeline entirely on your machine:
+
+1. **Extract** — pull out the people, decisions, open questions, and insights from the conversation
+2. **Narrate** — synthesize a 2-4 sentence memory that reads like something a thoughtful colleague would remember
+3. **Detect deltas** — what changed? New priorities, resolved threads, shifted waiting-ons
+4. **Embed** — generate a vector for semantic search so this memory can be found later
+
+Every memory enters a review queue. Cairn explains what it learned and why it thinks it matters. You approve, reject, or edit it. Nothing enters the knowledge base without your confirmation.
+
+When the same pattern comes up again — you reaffirm a decision, a preference shows up a second time — the existing memory gets strengthened rather than duplicated. Frequently reinforced memories carry more weight in future reasoning. A fact remembered three times matters more than a fact remembered once.
+
+The next time you open a conversation, Cairn retrieves relevant memories based on what you're discussing, weighted by both relevance and how many times you've confirmed them. Each conversation is richer than the last because the context compounds.
+
+---
+
+## Calendar and email through Thunderbird
+
+Cairn doesn't connect to Google, Microsoft, or any cloud provider to read your calendar and email. Instead, it reads from Thunderbird — Mozilla's open-source email and calendar client.
+
+Thunderbird has decades of track record from the Mozilla Foundation. It stores your data locally in standard formats. Cairn reads from Thunderbird's local databases to understand your schedule and contacts, observing calendar event ordering and email patterns to build context for what needs your attention.
+
+This is a deliberate architectural choice. By relying on Thunderbird as the bridge, Cairn inherits the trust and transparency of an open-source project maintained by a nonprofit — without ever touching a cloud API directly.
+
+---
+
 ## Why small models?
 
 Large language models require cloud infrastructure, which means your data travels. Cairn uses small, efficient models (7B parameters and under) that run entirely on your hardware.

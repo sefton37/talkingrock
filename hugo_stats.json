@@ -74,11 +74,13 @@
     ],
     "ids": [
       "authentication",
+      "calendar-and-email-through-thunderbird",
       "contact",
       "cookies",
       "data-retention",
       "design-choices",
       "four-layers-of-verification",
+      "how-it-learns",
       "how-it-works",
       "how-to-verify",
       "multi-layer-verification",
