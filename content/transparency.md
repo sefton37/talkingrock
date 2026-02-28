@@ -11,7 +11,8 @@ We believe you should know exactly who's involved when you visit a website. This
 
 | Dependency | What it does | What data it sees | Why we chose it |
 |---|---|---|---|
-| **Cloudflare** | CDN, DDoS protection, DNS, hosting | IP addresses (for routing, not logged by us), request metadata | Industry-standard infrastructure. Zero trust architecture. |
+| **Cloudflare** | CDN, DDoS protection, DNS, TLS, tunnel | IP addresses (for routing, not logged by us), request metadata | Industry-standard zero trust network. Tunnel means no open ports on origin. |
+| **DigitalOcean** | VPS hosting (origin server) | Serves static files and API requests via tunnel | Self-managed infrastructure. Full control over the stack. |
 | **HuggingFace** | Demo inference compute | Demo interaction data during active session | GPU compute for small model inference. Only used during demo. |
 | **Transactional email provider** | Sends magic link emails | Email address | Required for passwordless authentication. No marketing use. |
 
@@ -34,7 +35,7 @@ This site is open source. Every claim on this page can be verified by reading th
 2. Check the CSS — no external font imports
 3. Check the network tab — no requests to ad networks or analytics services
 4. Read the Pulse analytics code — collection boundaries are explicit
-5. [View the full repository](https://github.com/talkingrock/talkingrock.ai)
+5. [View the full repository](https://github.com/sefton37/talkingrock)
 
 ## Updates
 

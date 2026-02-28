@@ -64,7 +64,7 @@ Pulse analytics events are retained for 90 days, then aggregated to daily summar
 
 ## Verification
 
-This site is open source. You can read the Pulse analytics source code, the authentication implementation, and every other line. [View the repository.](https://github.com/talkingrock/talkingrock.ai)
+This site is open source. You can read the Pulse analytics source code, the authentication implementation, and every other line. [View the repository.](https://github.com/sefton37/talkingrock)
 
 ## Contact
 
