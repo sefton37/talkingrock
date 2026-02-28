@@ -16,11 +16,13 @@ Cairn is a local-first AI assistant that prioritizes your autonomy over its own 
 
 ## How it works
 
-Cairn observes your digital environment — calendar, email, task lists — and proposes prioritization, scheduling, and workflow optimizations. But it never acts unilaterally.
+Cairn uses The Play — a two-tier knowledge base built on a theatrical metaphor — to develop the context and narrative of what you're working on. **Acts** are the big arcs of your life (career, health, family, a project). **Scenes** are the concrete things happening within them (a meeting, a deadline, a task). Two levels, deliberately. Enough structure to stay oriented, not enough to hide behind.
+
+Cairn observes your digital environment — calendar, email, The Play — and surfaces what needs your attention. It builds context from your narrative, not a to-do list. And it never acts unilaterally.
 
 Every suggestion follows the same cycle:
 
-1. **Observe** — Cairn notices a pattern or context signal
+1. **Observe** — Cairn notices a pattern or context signal from your Acts and Scenes
 2. **Distill** — it formulates a lesson or recommendation
 3. **Propose** — it presents the lesson to you with full reasoning
 4. **Negotiate** — you accept, reject, or modify the lesson
