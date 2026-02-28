@@ -63,9 +63,13 @@ This is a deliberate architectural choice. By relying on Thunderbird as the brid
 
 ## Why small models?
 
-Large language models require cloud infrastructure, which means your data travels. Cairn uses small, efficient models (7B parameters and under) that run entirely on your hardware.
+Large language models require cloud infrastructure, which means your data travels. Cairn uses small, efficient models (7B parameters and under) that run entirely on your hardware — including hardware most people already own. A 10-year-old laptop with 8 GB of RAM is enough. No GPU required. No subscription.
 
 This isn't a compromise — it's a design choice. Small models fine-tuned to your context outperform general-purpose giants for personal workflows. And they do it without sending your calendar to a data center.
+
+Cairn runs models through [Ollama](https://ollama.com), an open-source tool for running language models locally. You pick the model. You own the weights. Nothing phones home. If Cairn doesn't work for you anymore, your data is still yours in standard formats on your own machine.
+
+AI shouldn't require a $2,000 GPU or a monthly subscription to a company that trains on your conversations. It should run on the hardware you already have, with models you can inspect, replace, or delete.
 
 ---
 
