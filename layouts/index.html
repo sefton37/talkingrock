@@ -1,5 +1,14 @@
 {{ define "main" }}
-<section class="hero">
+{{- $hero := resources.Get "Sonora Sunrise.png" -}}
+{{- $heroLg := $hero.Resize "1920x q85 webp" -}}
+{{- $heroMd := $hero.Resize "1024x q80 webp" -}}
+{{- $heroSm := $hero.Resize "640x q75 webp" -}}
+<section class="hero" style="--hero-bg: url('{{ $heroLg.RelPermalink }}');">
+  <picture class="hero-bg">
+    <source media="(max-width: 640px)" srcset="{{ $heroSm.RelPermalink }}">
+    <source media="(max-width: 1024px)" srcset="{{ $heroMd.RelPermalink }}">
+    <img src="{{ $heroLg.RelPermalink }}" alt="" aria-hidden="true" loading="eager">
+  </picture>
   <div class="hero-inner">
     <h1>{{ .Site.Params.tagline | safeHTML }}</h1>
     <p class="hero-sub">{{ .Site.Params.description }}</p>
