@@ -13,38 +13,62 @@ The core principle: **enhance, don't replace.** Your terminal still works exactl
 
 ## How it works
 
-ReOS sits between you and your shell with a parse gate that decides whether to act:
+### The parse gate
 
-1. **Valid shell command?** Execute it directly — full stdin/stdout/stderr, interactive prompts work normally.
-2. **Natural language?** Analyze intent, check your system, propose the right command.
+ReOS sits between you and your shell with a parse gate that decides how to handle each input:
 
-There's no mode switching. No special prefix. If you type `ls -la`, it runs `ls -la`. If you type "what's using all my memory," it finds the answer.
+1. **Valid shell command?** Execute it directly — full stdin/stdout/stderr, interactive prompts, pipes, and redirects work normally.
+2. **Natural language?** Route to the agent for intent analysis, system inspection, and command proposal.
 
----
+No mode switching. No special prefix. If you type `ls -la`, it runs `ls -la`. If you type "what's using all my memory," it figures out the answer.
 
-## The parse gate
+### System context gathering
 
-When ReOS detects natural language, it runs through four steps:
+When ReOS detects natural language, the `ReOSAgent` gathers your system context before proposing anything:
 
-1. **Intent analysis** — what are you trying to do? (run, install, find, monitor, etc.)
-2. **System check** — what's available on your machine? (PATH, packages, services)
-3. **Semantic search** — find programs by description, not just name ("picture editor" finds GIMP)
-4. **Smart proposal** — suggest a command with context, explain what it does, ask before executing
+- **OS detection** — reads `/etc/os-release` to know your distribution
+- **Kernel version** — determines available features
+- **Package manager** — detects `apt`, `dnf`, `pacman`, `zypper`, or `nix`
+- **Shell** — reads your `$SHELL` to match command syntax
+- **Running services** — queries systemd for current state
 
-Every proposed command is shown to you first. Nothing runs without your approval.
+This context shapes every suggestion. ReOS doesn't propose `apt install` on a Fedora system.
+
+### Code mode routing
+
+ReOS includes a routing layer that distinguishes system administration requests from code-related requests. Pattern matching across 70+ indicators classifies requests as `CODE`, `SYSADMIN`, or `AMBIGUOUS`:
+
+- **Sysadmin** — services, packages, users, network, containers, logs, security
+- **Code** — file editing, testing, debugging, building, version control, dependencies
+
+When a request is code-related and an Act in The Play has a repository assigned, ReOS routes to [RIVA](/riva) for code-aware handling.
+
+### Safety enforcement
+
+Two layers of protection before any command executes:
+
+**Hard blocks** — regex patterns that catch catastrophic commands outright:
+- `rm -rf /`, fork bombs, `dd` to physical disks, `mkfs` on system partitions, `chmod -R 777 /`
+
+**Confirmation gates** — patterns requiring explicit user approval:
+- `rm -rf` (any path), disk utilities, `shutdown`, `reboot`, partition tools
+
+Rate limiting prevents runaway sudo escalation, and every proposed command is shown to you first with an explanation of what it does. Nothing runs without your approval.
 
 ---
 
 ## What it can do
 
-- **Process monitoring** — "what's eating my RAM?" → ranked memory consumers
-- **Service management** — "restart nginx" → systemd service control
-- **Package management** — "install ffmpeg" → finds and installs via your package manager
+- **Process monitoring** — "what's eating my RAM?" — ranked memory consumers
+- **Service management** — "restart nginx" — systemd service control with status
+- **Package management** — "install ffmpeg" — finds and installs via your detected package manager
 - **Container control** — Docker and Podman operations in plain language
 - **File operations** — search, move, organize with safety checks
-- **System diagnostics** — disk usage, network status, hardware info
+- **System diagnostics** — disk usage, network status, listening ports, hardware info
+- **Log inspection** — journalctl queries in plain language
+- **Firewall status** — UFW and firewalld state inspection
 
-All through small models (1-3B parameters) running locally. Shell commands are constrained and predictable — you don't need a massive model to get them right.
+All through local models (3-8B parameters) running locally. Shell commands are constrained and predictable — you don't need a massive model to get them right.
 
 ---
 
