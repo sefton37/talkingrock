@@ -1,6 +1,9 @@
 ---
 title: "ReOS"
 description: "Natural language Linux, right in your shell. It enhances the command line — it doesn't replace it."
+lastmod: 2026-03-06
+schema_type: "SoftwareApplication"
+schema_category: "DeveloperApplication"
 ---
 
 ## What is ReOS?

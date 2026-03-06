@@ -2,17 +2,85 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}</title>
 <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<link rel="canonical" href="{{ .Permalink }}">
 {{- $styles := resources.Get "css/main.css" | minify | fingerprint -}}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}">
 <meta name="theme-color" content="#1a1a1a">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 {{ if .IsHome -}}
 <meta property="og:title" content="{{ .Site.Title }}">
 <meta property="og:description" content="{{ .Site.Params.description }}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{{ .Site.BaseURL }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ .Site.Title }}">
+<meta name="twitter:description" content="{{ .Site.Params.description }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Talking Rock AI",
+  "url": "https://talkingrock.ai",
+  "description": {{ .Site.Params.description | jsonify }},
+  "sameAs": [
+    "https://github.com/sefton37/talkingrock",
+    "https://rogueroutine.substack.com"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "kellogg@brengel.com",
+    "contactType": "General"
+  }
+}
+</script>
 {{- else -}}
 <meta property="og:title" content="{{ .Title }}">
 <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 <meta property="og:type" content="article">
 <meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ .Title }}">
+<meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+{{- end }}
+{{- if .Params.schema_type }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": {{ .Params.schema_type | jsonify }},
+  "name": {{ .Title | jsonify }},
+  "description": {{ .Description | jsonify }},
+  "url": {{ .Permalink | jsonify }},
+  "applicationCategory": {{ .Params.schema_category | jsonify }},
+  "operatingSystem": "Linux, macOS",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+{{- end }}
+{{- if not .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://talkingrock.ai/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": {{ .Title | jsonify }},
+      "item": {{ .Permalink | jsonify }}
+    }
+  ]
+}
+</script>
 {{- end }}

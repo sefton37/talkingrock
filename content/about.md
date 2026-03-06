@@ -1,6 +1,7 @@
 ---
 title: "About"
 description: "The philosophy behind Talking Rock AI."
+lastmod: 2026-03-06
 ---
 
 > **Mission:** Center your data around you, not in a data center, so that your attention is centered on what you value.
@@ -43,6 +44,8 @@ Every request passes through a five-layer verification pipeline before anything 
 
 These aren't features. They're the architecture.
 
+Every component — Tailscale, Thunderbird, Ollama, PAM — is independently trusted, open source, and user-controlled. No single vendor, no single point of compromise. Traditional SaaS bundles trust behind one company; Talking Rock distributes it across independent systems you can audit and replace. Assembly isn't friction — it's the security model.
+
 ## Smart models, outsized impact
 
 True democratization means running on hardware people actually have — not the
@@ -60,11 +63,15 @@ save tokens on a 70B one.
 
 ## What I'm building
 
-Three tools, one philosophy. All local-first, all open source, all running on hardware you already own.
+Four tools, one philosophy. All local-first, all open source, all running on hardware you already own.
 
-### [Cairn](/cairn/) — personal attention minder
+### [Cairn](/cairn/) — personal attention minder and development orchestrator
 
-Cairn manages your attention, not your tasks. It reads your calendar and email through Thunderbird, organizes your life through a two-tier structure called The Play, and learns only what you explicitly approve. Two levels, deliberately — enough structure to stay oriented, not enough to hide behind. A five-layer verification pipeline checks every operation before it executes. A coherence kernel filters suggestions against your stated values and goals — sovereignty-preserving, never guilt-tripping. When a conversation closes, a four-stage compression pipeline extracts meaning into persistent, auditable memory.
+Cairn manages your attention, not your tasks. It reads your calendar and email through Thunderbird, organizes your life through a two-tier structure called The Play, and learns only what you explicitly approve. Two levels, deliberately — enough structure to stay oriented, not enough to hide behind. A five-layer verification pipeline checks every operation before it executes. A coherence kernel filters suggestions against your stated values and goals — sovereignty-preserving, never guilt-tripping. When a conversation closes, a four-stage compression pipeline extracts meaning into persistent, auditable memory. Cairn is expanding into work management — observing Claude Code agent sessions as a PM and Scrum Master, surfacing project insights for your approval, never commanding.
+
+### [Helm](/helm/) — the mobile command for Cairn
+
+Helm puts Cairn in your pocket. Full feature parity — orchestrate your knowledge base, calendar, email, personal CRM, and every agent in the Talking Rock ecosystem from your phone. Cairn acts as PM and Scrum Master for all agents: security-hardened boundaries, circuit breakers, every action tracked and reviewed. TLS encryption, PAM authentication, fail-closed design, audit logging. Two production dependencies. Converging into Cairn as its native mobile interface.
 
 ### [ReOS](/reos/) — natural language Linux
 

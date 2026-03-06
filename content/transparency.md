@@ -3,17 +3,16 @@ title: "Transparency"
 description: "Every third-party dependency on this site, what it does, and what data flows through it."
 ---
 
-We believe you should know exactly who's involved when you visit a website. This page lists every external dependency on talkingrock.ai, what it does, and what data it can see.
+You should know exactly who's involved when you visit a website. This page lists every external dependency on talkingrock.ai, what it does, and what data it can see.
 
 ---
 
 ## Third-party dependencies
 
-| Dependency | What it does | What data it sees | Why we chose it |
+| Dependency | What it does | What data it sees | Why it's here |
 |---|---|---|---|
-| **Cloudflare** | CDN, DDoS protection, DNS, TLS, tunnel | IP addresses (for routing, not logged by us), request metadata | Industry-standard zero trust network. Tunnel means no open ports on origin. |
+| **Cloudflare** | CDN, DDoS protection, DNS, TLS, tunnel | IP addresses (for routing, not logged), request metadata | Industry-standard zero trust network. Tunnel means no open ports on origin. |
 | **DigitalOcean** | VPS hosting (origin server) | Serves static files and API requests via tunnel | Self-managed infrastructure. Full control over the stack. |
-| **HuggingFace** | Demo inference compute | Demo interaction data during active session | GPU compute for small model inference. Only used during demo. |
 | **Transactional email provider** | Sends magic link emails | Email address | Required for passwordless authentication. No marketing use. |
 
 ## What's NOT on this list
@@ -39,4 +38,4 @@ This site is open source. Every claim on this page can be verified by reading th
 
 ## Updates
 
-When we add or remove a dependency, this page is updated in the same commit. The git history is the audit trail.
+When a dependency is added or removed, this page is updated in the same commit. The git history is the audit trail.

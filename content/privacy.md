@@ -1,15 +1,15 @@
 ---
 title: "Privacy"
-description: "What we collect, what we don't, and why. Plain language, no legalese."
+description: "What's collected, what isn't, and why. Plain language, no legalese."
 ---
 
-This is our privacy policy. It's written in plain language because you shouldn't need a law degree to understand how your data is handled.
+This is the privacy policy for talkingrock.ai. It's written in plain language because you shouldn't need a law degree to understand how your data is handled.
 
 ---
 
-## What we collect
+## What's collected
 
-We operate a lightweight analytics system called **Pulse** that collects only what we need to keep the site healthy:
+A lightweight analytics system called **Pulse** collects only what's needed to keep the site healthy:
 
 | Signal | Purpose |
 |---|---|
@@ -21,7 +21,7 @@ We operate a lightweight analytics system called **Pulse** that collects only wh
 | Page load time | Performance monitoring |
 | Demo funnel events | Know if the demo works |
 
-## What we do NOT collect
+## What's NOT collected
 
 - IP addresses — never logged, never stored
 - Cookies or persistent identifiers of any kind
@@ -34,19 +34,17 @@ We operate a lightweight analytics system called **Pulse** that collects only wh
 
 ## Authentication
 
-If you try the demo, we ask for your email to send a magic link. Here's exactly what we store:
+If you try the demo, you'll be asked for your email to receive a magic link. Here's exactly what's stored:
 
 - Your email address
 - Timestamp of signup
 - Number of demo sessions
 
-Nothing else. No pre-checked newsletter boxes. No "we may share with partners." Your email is used to authenticate you. That's it.
+Nothing else. No pre-checked newsletter boxes. No "may share with partners." Your email is used to authenticate you. That's it.
 
 ## The demo
 
-The CAIRN demo runs on HuggingFace infrastructure. During an active demo session, your interactions are processed by HuggingFace's servers. No demo data is stored after your session ends. See [HuggingFace's privacy policy](https://huggingface.co/privacy) for their data handling.
-
-The production CAIRN product runs entirely on your machine. No cloud. No intermediary.
+The Cairn demo runs on Talking Rock infrastructure. No demo data is stored after your session ends. The production Cairn product runs entirely on your machine. No cloud. No intermediary.
 
 ## Cookies
 
@@ -56,7 +54,7 @@ No cookie banner exists because no cookie banner is needed. The absence of the b
 
 ## Third parties
 
-See our [Transparency](/transparency) page for a complete list of every third-party dependency, what data it sees, and why we chose it.
+See the [Transparency](/transparency) page for a complete list of every third-party dependency, what data it sees, and why it's there.
 
 ## Data retention
 

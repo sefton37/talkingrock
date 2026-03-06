@@ -3,7 +3,7 @@ languageCode = 'en-us'
 title = 'Talking Rock AI'
 
 [params]
-  description = 'Local, zero trust AI. Small models and footprint, outsized impact and trust.'
+  description = 'Local, open source, zero trust AI. Small models and footprint, outsized impact and trust.'
   tagline = 'Center your data around you,<br>not a data center.'
 
 [menus]
@@ -12,27 +12,39 @@ title = 'Talking Rock AI'
     url = '/cairn/'
     weight = 1
   [[menus.main]]
+    name = 'Helm'
+    url = '/helm/'
+    weight = 2
+  [[menus.main]]
     name = 'ReOS'
     url = '/reos/'
-    weight = 2
+    weight = 3
   [[menus.main]]
     name = 'RIVA'
     url = '/riva/'
-    weight = 3
+    weight = 4
   [[menus.main]]
     name = 'NOLang'
     url = '/nolang/'
-    weight = 4
+    weight = 5
   [[menus.main]]
     name = 'About'
     url = '/about/'
-    weight = 5
+    weight = 6
   [[menus.main]]
     name = 'Blog'
     url = 'https://rogueroutine.substack.com'
-    weight = 6
+    weight = 7
     [menus.main.params]
       external = true
+
+[sitemap]
+  changeFreq = 'monthly'
+  priority = -1
+  filename = 'sitemap.xml'
+
+[frontmatter]
+  lastmod = ['lastmod', ':fileModTime']
 
 [markup]
   [markup.goldmark]

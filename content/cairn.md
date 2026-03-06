@@ -1,6 +1,9 @@
 ---
 title: "Cairn"
-description: "A local-first personal attention minder. Small models, your hardware, your data, your rules."
+description: "A local-first personal attention minder and development orchestrator. Small models, your hardware, your data, your rules."
+lastmod: 2026-03-06
+schema_type: "SoftwareApplication"
+schema_category: "ProductivityApplication"
 ---
 
 ## What is Cairn?
@@ -105,6 +108,66 @@ When the same pattern comes up again — you reaffirm a decision, a preference a
 Cairn reads your calendar and email through [Thunderbird](https://www.thunderbird.net/) — Mozilla's open-source client. No Google, no Microsoft, no cloud APIs. Thunderbird stores your data locally in standard formats; Cairn reads from those local databases to understand your schedule, contacts, and communication patterns.
 
 This is a deliberate architectural choice. By bridging through Thunderbird, Cairn inherits the trust of an open-source project maintained by a nonprofit without ever touching a cloud API.
+
+---
+
+## Work management through Claude Code
+
+Cairn is expanding from life management to work management — applying the same principles to development workflows. Observe, surface, never command.
+
+### The PM and Scrum Master roles
+
+Cairn watches [Claude Code](https://docs.anthropic.com/en/docs/claude-code) agent sessions and extracts project-level insights: what's being worked on, what's blocked, what decisions were made, what patterns keep recurring.
+
+The key constraint: Cairn and Claude Code are peers, not a hierarchy. Both report to you. Neither commands the other.
+
+```
+        You
+       /   \
+    Cairn   Claude Code
+  (observes) (executes)
+```
+
+Cairn observes agent activity. It surfaces what it finds. Everything it proposes enters a review queue — the same approval workflow used for memory extraction. Nothing is acted on without your explicit consent.
+
+### What Cairn surfaces
+
+- **Play amendments** — an agent session reveals a new project or shifts priorities; Cairn proposes updating your Acts and Scenes
+- **Memory candidates** — decisions made during coding sessions that should persist as organizational knowledge
+- **Project tracking** — which projects are active, which are stalled, which need attention
+- **Lessons learned** — recurring patterns across agent sessions that might inform future work
+
+### Helm: your mobile command
+
+[Helm](/helm/) puts Cairn in your pocket. Full feature parity — your knowledge base, The Play, calendar and email, personal CRM, and every agent in the ecosystem, all accessible from your phone. Authenticated through Cairn's PAM system, encrypted with TLS, audit-logged, with the same security boundaries that keep agents from running amok on the desktop.
+
+Helm is converging into Cairn as its native mobile interface.
+
+### Development orchestration roadmap
+
+- **Phase 1:** Security hardening (Helm) — COMPLETE
+- **Phase 2:** Claude Code as a Cairn service — PLANNED
+- **Phase 3:** Streaming bridge for real-time observation — PLANNED
+- **Phase 4:** Memory integration and project observation — PLANNED
+
+See the full convergence roadmap on the [Helm page](/helm/).
+
+---
+
+## Security through decentralization
+
+Each component in Cairn's stack is independently trusted, independently auditable, and independently replaceable:
+
+- **Thunderbird** — calendar and email, maintained by Mozilla
+- **Ollama** — local LLM inference, open source
+- **Tailscale** — network security via WireGuard, open source core
+- **PAM** — authentication through your operating system
+
+No single vendor. No single point of compromise. If any component fails or disappears, you replace it — the others keep working.
+
+Traditional SaaS bundles everything behind one company. Compromise that company and you compromise everything. Cairn distributes trust across independent open-source systems that you control.
+
+Assembly isn't friction. It IS the security model.
 
 ---
 

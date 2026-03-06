@@ -1,6 +1,9 @@
 ---
 title: "NOLang"
 description: "A programming language designed for LLM generation, not human authorship. One computation, one representation."
+lastmod: 2026-03-06
+schema_type: "SoftwareApplication"
+schema_category: "DeveloperApplication"
 ---
 
 ## What is NOLang?
